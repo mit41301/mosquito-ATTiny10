@@ -1,0 +1,1333 @@
+
+AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm Tue Dec 02 19:20:43 2025
+
+[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc\tn10def.inc'
+[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc\tn10def.inc'
+                                 
+                                 ;
+                                 
+                                 ;***** Created: 2011-02-09 12:03 ******* Source: ATtiny10.xml ************
+                                 ;*************************************************************************
+                                 ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
+                                 ;* 
+                                 ;* Number            : AVR000
+                                 ;* File Name         : "tn10def.inc"
+                                 ;* Title             : Register/Bit Definitions for the ATtiny10
+                                 ;* Date              : 2011-02-09
+                                 ;* Version           : 2.35
+                                 ;* Support E-mail    : avr@atmel.com
+                                 ;* Target MCU        : ATtiny10
+                                 ;* 
+                                 ;* DESCRIPTION
+                                 ;* When including this file in the assembly program file, all I/O register 
+                                 ;* names and I/O register bit names appearing in the data book can be used.
+                                 ;* In addition, the six registers forming the three data pointers X, Y and 
+                                 ;* Z have been assigned names XL - ZH. Highest RAM address for Internal 
+                                 ;* SRAM is also defined 
+                                 ;* 
+                                 ;* The Register names are represented by their hexadecimal address.
+                                 ;* 
+                                 ;* The Register Bit names are represented by their bit number (0-7).
+                                 ;* 
+                                 ;* Please observe the difference in using the bit names with instructions
+                                 ;* such as "sbr"/"cbr" (set/clear bit in register) and "sbrs"/"sbrc"
+                                 ;* (skip if bit in register set/cleared). The following example illustrates
+                                 ;* this:
+                                 ;* 
+                                 ;* in    r16,PORTB             ;read PORTB latch
+                                 ;* sbr   r16,(1<<PB6)+(1<<PB5) ;set PB6 and PB5 (use masks, not bit#)
+                                 ;* out   PORTB,r16             ;output to PORTB
+                                 ;* 
+                                 ;* in    r16,TIFR              ;read the Timer Interrupt Flag Register
+                                 ;* sbrc  r16,TOV0              ;test the overflow flag (use bit#)
+                                 ;* rjmp  TOV0_is_set           ;jump if set
+                                 ;* ...                         ;otherwise do something else
+                                 ;*************************************************************************
+                                 
+                                 #ifndef _TN10DEF_INC_
+                                 #define _TN10DEF_INC_
+                                 
+                                 
+                                 #pragma partinc 0
+                                 
+                                 ; ***** SPECIFY DEVICE ***************************************************
+                                 .device ATtiny10
+                                 #pragma AVRPART ADMIN PART_NAME ATtiny10
+                                 .equ	SIGNATURE_000	= 0x1e
+                                 .equ	SIGNATURE_001	= 0x90
+                                 .equ	SIGNATURE_002	= 0x03
+                                 
+                                 #pragma AVRPART CORE CORE_VERSION AVR8L_0
+                                 
+                                 
+                                 ; ***** I/O REGISTER DEFINITIONS *****************************************
+                                 ; NOTE:
+                                 ; Definitions marked "MEMORY MAPPED"are extended I/O ports
+                                 ; and cannot be used with IN/OUT instructions
+                                 .equ	SREG	= 0x3f
+                                 .equ	SPL	= 0x3d
+                                 .equ	SPH	= 0x3e
+                                 .equ	CCP	= 0x3c
+                                 .equ	RSTFLR	= 0x3b
+                                 .equ	SMCR	= 0x3a
+                                 .equ	OSCCAL	= 0x39
+                                 .equ	CLKMSR	= 0x37
+                                 .equ	CLKPSR	= 0x36
+                                 .equ	PRR	= 0x35
+                                 .equ	VLMCSR	= 0x34
+                                 .equ	NVMCMD	= 0x33
+                                 .equ	NVMCSR	= 0x32
+                                 .equ	WDTCSR	= 0x31
+                                 .equ	GTCCR	= 0x2f
+                                 .equ	TCCR0A	= 0x2e
+                                 .equ	TCCR0B	= 0x2d
+                                 .equ	TCCR0C	= 0x2c
+                                 .equ	TIMSK0	= 0x2b
+                                 .equ	TIFR0	= 0x2a
+                                 .equ	TCNT0L	= 0x28
+                                 .equ	TCNT0H	= 0x29
+                                 .equ	OCR0AL	= 0x26
+                                 .equ	OCR0AH	= 0x27
+                                 .equ	OCR0BL	= 0x24
+                                 .equ	OCR0BH	= 0x25
+                                 .equ	ICR0L	= 0x22
+                                 .equ	ICR0H	= 0x23
+                                 .equ	ACSR	= 0x1f
+                                 .equ	ADCSRA	= 0x1d
+                                 .equ	ADCSRB	= 0x1c
+                                 .equ	ADMUX	= 0x1b
+                                 .equ	ADCL	= 0x19
+                                 .equ	DIDR0	= 0x17
+                                 .equ	EICRA	= 0x15
+                                 .equ	EIFR	= 0x14
+                                 .equ	EIMSK	= 0x13
+                                 .equ	PCICR	= 0x12
+                                 .equ	PCIFR	= 0x11
+                                 .equ	PCMSK	= 0x10
+                                 .equ	PORTCR	= 0x0c
+                                 .equ	PUEB	= 0x03
+                                 .equ	PORTB	= 0x02
+                                 .equ	DDRB	= 0x01
+                                 .equ	PINB	= 0x00
+                                 
+                                 
+                                 ; ***** BIT DEFINITIONS **************************************************
+                                 
+                                 ; ***** AD_CONVERTER *****************
+                                 ; ADMUX - The ADC multiplexer Selection Register
+                                 .equ	MUX0	= 0	; Analog Channel Selection Bits
+                                 .equ	MUX1	= 1	; Analog Channel Selection Bits
+                                 
+                                 ; ADCSRA - The ADC Control and Status register A
+                                 .equ	ADPS0	= 0	; ADC  Prescaler Select Bits
+                                 .equ	ADPS1	= 1	; ADC  Prescaler Select Bits
+                                 .equ	ADPS2	= 2	; ADC  Prescaler Select Bits
+                                 .equ	ADIE	= 3	; ADC Interrupt Enable
+                                 .equ	ADIF	= 4	; ADC Interrupt Flag
+                                 .equ	ADATE	= 5	; ADC  Auto Trigger Enable
+                                 .equ	ADSC	= 6	; ADC Start Conversion
+                                 .equ	ADEN	= 7	; ADC Enable
+                                 
+                                 ; ADCSRB - The ADC Control and Status register B
+                                 .equ	ADTS0	= 0	; ADC Auto Trigger Source bit 0
+                                 .equ	ADTS1	= 1	; ADC Auto Trigger Source bit 1
+                                 .equ	ADTS2	= 2	; ADC Auto Trigger Source bit 2
+                                 
+                                 ; ADCL - ADC Data Register
+                                 .equ	ADC0	= 0	; ADC Data Register Bit 0
+                                 .equ	ADC1	= 1	; ADC Data Register Bit 1
+                                 .equ	ADC2	= 2	; ADC Data Register Bit 2
+                                 .equ	ADC3	= 3	; ADC Data Register Bit 3
+                                 .equ	ADC4	= 4	; ADC Data Register Bit 4
+                                 .equ	ADC5	= 5	; ADC Data Register Bit 5
+                                 .equ	ADC6	= 6	; ADC Data Register Bit 6
+                                 .equ	ADC7	= 7	; ADC Data Register Bit 7
+                                 
+                                 ; DIDR0 - Digital Input Disable Register
+                                 .equ	ADC0D	= 0	; 
+                                 .equ	ADC1D	= 1	; 
+                                 .equ	ADC2D	= 2	; 
+                                 .equ	ADC3D	= 3	; 
+                                 
+                                 
+                                 ; ***** ANALOG_COMPARATOR ************
+                                 ; ACSR - Analog Comparator Control And Status Register
+                                 .equ	ACIS0	= 0	; Analog Comparator Interrupt Mode Select bit 0
+                                 .equ	ACIS1	= 1	; Analog Comparator Interrupt Mode Select bit 1
+                                 .equ	ACIC	= 2	; Analog Comparator Input Capture  Enable
+                                 .equ	ACIE	= 3	; Analog Comparator Interrupt Enable
+                                 .equ	ACI	= 4	; Analog Comparator Interrupt Flag
+                                 .equ	ACO	= 5	; Analog Compare Output
+                                 .equ	ACD	= 7	; Analog Comparator Disable
+                                 
+                                 ; DIDR0 - 
+                                 .equ	AIN0D	= 0	; AIN0 Digital Input Disable
+                                 .equ	AIN1D	= 1	; AIN1 Digital Input Disable
+                                 
+                                 
+                                 ; ***** CPU **************************
+                                 ; CCP - Configuration Change Protection
+                                 .equ	CCP0	= 0	; Configuration Change Protection bit 0
+                                 .equ	CCP1	= 1	; Configuration Change Protection bit 1
+                                 .equ	CCP2	= 2	; Configuration Change Protection bit 2
+                                 .equ	CCP3	= 3	; Configuration Change Protection bit 3
+                                 .equ	CCP4	= 4	; Configuration Change Protection bit 4
+                                 .equ	CCP5	= 5	; Configuration Change Protection bit 5
+                                 .equ	CCP6	= 6	; Configuration Change Protection bit 6
+                                 .equ	CCP7	= 7	; Configuration Change Protection bit 7
+                                 
+                                 ; SREG - Status Register
+                                 .equ	SREG_C	= 0	; Carry Flag
+                                 .equ	SREG_Z	= 1	; Zero Flag
+                                 .equ	SREG_N	= 2	; Negative Flag
+                                 .equ	SREG_V	= 3	; Two's Complement Overflow Flag
+                                 .equ	SREG_S	= 4	; Sign Bit
+                                 .equ	SREG_H	= 5	; Half Carry Flag
+                                 .equ	SREG_T	= 6	; Bit Copy Storage
+                                 .equ	SREG_I	= 7	; Global Interrupt Enable
+                                 
+                                 ; CLKMSR - Clock Main Settings Register
+                                 .equ	CLKMS0	= 0	; Clock Main Select Bit 0
+                                 .equ	CLKMS1	= 1	; Clock Main Select Bit 1
+                                 
+                                 ; CLKPSR - Clock Prescale Register
+                                 .equ	CLKPS0	= 0	; Clock Prescaler Select Bit 0
+                                 .equ	CLKPS1	= 1	; Clock Prescaler Select Bit 1
+                                 .equ	CLKPS2	= 2	; Clock Prescaler Select Bit 2
+                                 .equ	CLKPS3	= 3	; Clock Prescaler Select Bit 3
+                                 
+                                 ; OSCCAL - Oscillator Calibration Value
+                                 .equ	CAL0	= 0	; Oscillator Calibration Value Bit0
+                                 .equ	CAL1	= 1	; Oscillator Calibration Value Bit1
+                                 .equ	CAL2	= 2	; Oscillator Calibration Value Bit2
+                                 .equ	CAL3	= 3	; Oscillator Calibration Value Bit3
+                                 .equ	CAL4	= 4	; Oscillator Calibration Value Bit4
+                                 .equ	CAL5	= 5	; Oscillator Calibration Value Bit5
+                                 .equ	CAL6	= 6	; Oscillator Calibration Value Bit6
+                                 .equ	CAL7	= 7	; Oscillator Calibration Value Bit7
+                                 
+                                 ; SMCR - Sleep Mode Control Register
+                                 .equ	SE	= 0	; Sleep Enable
+                                 .equ	SM0	= 1	; Sleep Mode Select Bit 0
+                                 .equ	SM1	= 2	; Sleep Mode Select Bit 1
+                                 .equ	SM2	= 3	; Sleep Mode Select Bit 2
+                                 
+                                 ; PRR - Power Reduction Register
+                                 .equ	PRTIM0	= 0	; Power Reduction Timer/Counter0
+                                 .equ	PRADC	= 1	; Power Reduction ADC
+                                 
+                                 ; VLMCSR - Vcc Level Monitoring Control and Status Register
+                                 .equ	VLM0	= 0	; Trigger Level of Voltage Level Monitor bit 0
+                                 .equ	VLM1	= 1	; Trigger Level of Voltage Level Monitor bit 1
+                                 .equ	VLM2	= 2	; Trigger Level of Voltage Level Monitor bit 2
+                                 .equ	VLMIE	= 6	; VLM Interrupt Enable
+                                 .equ	VLMF	= 7	; VLM Flag
+                                 
+                                 ; RSTFLR - Reset Flag Register
+                                 .equ	PORF	= 0	; Power-on Reset Flag
+                                 .equ	EXTRF	= 1	; External Reset Flag
+                                 .equ	WDRF	= 3	; Watchdog Reset Flag
+                                 
+                                 ; NVMCSR - Non-Volatile Memory Control and Status Register
+                                 .equ	NVMBSY	= 7	; Non-Volatile Memory Busy
+                                 
+                                 ; NVMCMD - Non-Volatile Memory Command
+                                 .equ	NVMCMD0	= 0	; 
+                                 .equ	NVMCMD1	= 1	; 
+                                 .equ	NVMCMD2	= 2	; 
+                                 .equ	NVMCMD3	= 3	; 
+                                 .equ	NVMCMD4	= 4	; 
+                                 .equ	NVMCMD5	= 5	; 
+                                 
+                                 
+                                 ; ***** PORTB ************************
+                                 ; PORTCR - Port Control Register
+                                 .equ	BBMB	= 1	; Break-Before-Make Mode Enable
+                                 
+                                 ; PUEB - Pull-up Enable Control Register
+                                 .equ	PUEB0	= 0	; 
+                                 .equ	PUEB1	= 1	; 
+                                 .equ	PUEB2	= 2	; 
+                                 .equ	PUEB3	= 3	; 
+                                 
+                                 ; PORTB - Input Pins, Port B
+                                 .equ	PORTB0	= 0	; 
+                                 .equ	PB0	= 0	; For compatibility
+                                 .equ	PORTB1	= 1	; 
+                                 .equ	PB1	= 1	; For compatibility
+                                 .equ	PORTB2	= 2	; 
+                                 .equ	PB2	= 2	; For compatibility
+                                 .equ	PORTB3	= 3	; 
+                                 .equ	PB3	= 3	; For compatibility
+                                 
+                                 ; DDRB - Data Direction Register, Port B
+                                 .equ	DDB0	= 0	; 
+                                 .equ	DDB1	= 1	; 
+                                 .equ	DDB2	= 2	; 
+                                 .equ	DDB3	= 3	; 
+                                 
+                                 ; PINB - Port B Data register
+                                 .equ	PINB0	= 0	; 
+                                 .equ	PINB1	= 1	; 
+                                 .equ	PINB2	= 2	; 
+                                 .equ	PINB3	= 3	; 
+                                 
+                                 
+                                 ; ***** EXTERNAL_INTERRUPT ***********
+                                 ; EICRA - External Interrupt Control Register A
+                                 .equ	ISC00	= 0	; Interrupt Sense Control 0 Bit 0
+                                 .equ	ISC01	= 1	; Interrupt Sense Control 0 Bit 1
+                                 
+                                 ; EIMSK - External Interrupt Mask register
+                                 .equ	INT0	= 0	; External Interrupt Request 0 Enable
+                                 
+                                 ; EIFR - External Interrupt Flag register
+                                 .equ	INTF0	= 0	; External Interrupt Flag 0
+                                 
+                                 ; PCICR - Pin Change Interrupt Control Register
+                                 .equ	PCIE0	= 0	; Pin Change Interrupt Enable 0
+                                 
+                                 ; PCIFR - Pin Change Interrupt Flag Register
+                                 .equ	PCIF0	= 0	; Pin Change Interrupt Flag 0
+                                 
+                                 ; PCMSK - Pin Change Mask Register
+                                 .equ	PCINT0	= 0	; Pin Change Enable Mask 0
+                                 .equ	PCINT1	= 1	; Pin Change Enable Mask 1
+                                 .equ	PCINT2	= 2	; Pin Change Enable Mask 2
+                                 .equ	PCINT3	= 3	; Pin Change Enable Mask 3
+                                 
+                                 
+                                 ; ***** TIMER_COUNTER_0 **************
+                                 ; TCCR0A - Timer/Counter 0 Control Register A
+                                 .equ	WGM00	= 0	; Waveform Generation Mode
+                                 .equ	WGM01	= 1	; Waveform Generation Mode
+                                 .equ	COM0B0	= 4	; Compare Output Mode for Channel B bit 0
+                                 .equ	COM0B1	= 5	; Compare Output Mode for Channel B bit 1
+                                 .equ	COM0A0	= 6	; Compare Output Mode for Channel A bit 0
+                                 .equ	COM0A1	= 7	; Compare Output Mode for Channel A bit 1
+                                 
+                                 ; TCCR0B - Timer/Counter 0 Control Register B
+                                 .equ	CS00	= 0	; Clock Select
+                                 .equ	CS01	= 1	; Clock Select
+                                 .equ	CS02	= 2	; Clock Select
+                                 .equ	WGM02	= 3	; Waveform Generation Mode
+                                 .equ	WGM03	= 4	; Waveform Generation Mode
+                                 .equ	ICES0	= 6	; Input Capture Edge Select
+                                 .equ	ICNC0	= 7	; Input Capture Noise Canceler
+                                 
+                                 ; TCCR0C - Timer/Counter 0 Control Register C
+                                 .equ	FOC0B	= 6	; Force Output Compare for Channel B
+                                 .equ	FOC0A	= 7	; Force Output Compare for Channel A
+                                 
+                                 ; TIMSK0 - Timer Interrupt Mask Register 0
+                                 .equ	TOIE0	= 0	; Overflow Interrupt Enable
+                                 .equ	OCIE0A	= 1	; Output Compare A Match Interrupt Enable
+                                 .equ	OCIE0B	= 2	; Output Compare B Match Interrupt Enable
+                                 .equ	ICIE0	= 5	; Input Capture Interrupt Enable
+                                 
+                                 ; TIFR0 - Overflow Interrupt Enable
+                                 .equ	TOV0	= 0	; Timer Overflow Flag
+                                 .equ	OCF0A	= 1	; Timer Output Compare Flag 0A
+                                 .equ	OCF0B	= 2	; Timer Output Compare Flag 0B
+                                 .equ	ICF0	= 5	; Input Capture Flag
+                                 
+                                 ; GTCCR - General Timer/Counter Control Register
+                                 .equ	PSR	= 0	; Prescaler Reset
+                                 .equ	TSM	= 7	; Timer Synchronization Mode
+                                 
+                                 
+                                 ; ***** WATCHDOG *********************
+                                 ; WDTCSR - Watchdog Timer Control and Status Register
+                                 .equ	WDP0	= 0	; Watch Dog Timer Prescaler bit 0
+                                 .equ	WDP1	= 1	; Watch Dog Timer Prescaler bit 1
+                                 .equ	WDP2	= 2	; Watch Dog Timer Prescaler bit 2
+                                 .equ	WDE	= 3	; Watch Dog Enable
+                                 .equ	WDP3	= 5	; Watchdog Timer Prescaler Bit 3
+                                 .equ	WDIE	= 6	; Watchdog Timer Interrupt Enable
+                                 .equ	WDIF	= 7	; Watchdog Timer Interrupt Flag
+                                 
+                                 
+                                 
+                                 ; ***** LOCKSBITS ********************************************************
+                                 .equ	LB1	= 0	; Lockbit
+                                 .equ	LB2	= 1	; Lockbit
+                                 
+                                 
+                                 ; ***** FUSES ************************************************************
+                                 ; BYTE0 fuse bits
+                                 .equ	RSTDISBL	= 0	; Disable external reset
+                                 .equ	WDTON	= 1	; Watch dog timer always on
+                                 .equ	CKOUT	= 2	; Output external clock
+                                 
+                                 
+                                 
+                                 ; ***** CPU REGISTER DEFINITIONS *****************************************
+                                 .def	XH	= r27
+                                 .def	XL	= r26
+                                 .def	YH	= r29
+                                 .def	YL	= r28
+                                 .def	ZH	= r31
+                                 .def	ZL	= r30
+                                 
+                                 
+                                 
+                                 ; ***** DATA MEMORY DECLARATIONS *****************************************
+                                 .equ	FLASHEND	= 0x01ff	; Note: Word address
+                                 .equ	IOEND	= 0x003f
+                                 .equ	SRAM_START	= 0x0040
+                                 .equ	SRAM_SIZE	= 32
+                                 .equ	RAMEND	= 0x005f
+                                 .equ	XRAMEND	= 0x0000
+                                 .equ	E2END	= 0x0000
+                                 .equ	EEPROMEND	= 0x0000
+                                 
+                                 ; ***** MEMORY MAPPED NVM ************************************************
+                                 .equ	MAPPED_FLASH_START	= 0x4000
+                                 .equ	MAPPED_LOCKBITS_0	= 0x3f00
+                                 .equ	MAPPED_CONFIG_0	= 0x3f40
+                                 .equ	MAPPED_CALIB_0	= 0x3f80
+                                 .equ	MAPPED_SIGN_0	= 0x3fc0
+                                 .equ	MAPPED_SIGN_1	= 0x3fc1
+                                 .equ	MAPPED_SIGN_2	= 0x3fc2
+                                 .equ	MAPPED_FLASH_SIZE	= 0x0400
+                                 .equ	MAPPED_FLASH_END	= 0x43ff
+                                 #pragma AVRPART MEMORY PROG_FLASH 1024
+                                 #pragma AVRPART MEMORY EEPROM 0
+                                 #pragma AVRPART MEMORY INT_SRAM SIZE 32
+                                 #pragma AVRPART MEMORY INT_SRAM START_ADDR 0x40
+                                 
+                                 
+                                 
+                                 ; ***** BOOTLOADER DECLARATIONS ******************************************
+                                 .equ	PAGESIZE	= 16
+                                 
+                                 
+                                 
+                                 ; ***** INTERRUPT VECTORS ************************************************
+                                 .equ	INT0addr	= 0x0001	; External Interrupt Request 0
+                                 .equ	PCI0addr	= 0x0002	; Pin Change Interrupt Request 0
+                                 .equ	ICP0addr	= 0x0003	; Timer/Counter0 Input Capture
+                                 .equ	OVF0addr	= 0x0004	; Timer/Counter0 Overflow
+                                 .equ	OC0Aaddr	= 0x0005	; Timer/Counter Compare Match A
+                                 .equ	OC0Baddr	= 0x0006	; Timer/Counter Compare Match B
+                                 .equ	ACIaddr	= 0x0007	; Analog Comparator
+                                 .equ	WDTaddr	= 0x0008	; Watchdog Time-out
+                                 .equ	VLMaddr	= 0x0009	; Vcc Voltage Level Monitor
+                                 .equ	ADCCaddr	= 0x000a	; ADC Conversion Complete
+                                 
+                                 .equ	INT_VECTORS_SIZE	= 11	; size in words
+                                 
+                                 #pragma AVRPART CORE INSTRUCTIONS_NOT_SUPPORTED break
+                                 
+                                 #endif  /* _TN10DEF_INC_ */
+                                 
+                                 ; ***** END OF FILE ******************************************************
+                                 
+                                 ; mosquito.asm
+                                 ;
+                                 ; Created: 02-12-2025 19:03:44
+                                 ; Author : mit41301
+                                 ;
+                                 
+                                 
+                                 ;--------------------------------------------------------
+                                 ;here is the assembly code
+                                 ;--------------------------------------------------------
+                                 
+                                 ;
+                                 ; The rick rolling mosquito
+                                 ;
+                                 ; Copyright 2012 Eric Heisler
+                                 ;  This program is free software: you can redistribute it and/or modify
+                                 ;  it under the terms of the GNU General Public License version 3 as published by
+                                 ;  the Free Software Foundation.
+                                 ;
+                                 ;  This program is distributed in the hope that it will be useful,
+                                 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                                 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                                 ;  GNU General Public License for more details.
+                                 ;
+                                 ; receives data up to 64 bits plus a header
+                                 ; waits for 30 sec
+                                 ; transmits the received data
+                                 ; waits a second
+                                 ; rick rolls
+                                 ;
+                                 ; >pin 1(PB0) piezo
+                                 ; >pin 3(PB1) tx
+                                 ; >pin 4(PB2) rx
+                                 ; >pin 6(PB3) reset
+                                 ;
+                                 ;
+                                 
+                                 ; registers
+                                 ; r16-18 are for temp use
+                                 
+                                 .DEF rinLength = r19 ; number of bits
+                                 .DEF rinstop = r20 ; flags: bit0-stop receiving (timed out), 1-confirmed 1 on, 2-confirmed 1 off
+                                 .DEF rlongshort = r21 ; the longest or shortest length read from ram
+                                 .DEF rrxtimer = r22 ; for timing rx bits
+                                 .DEF rseqbitmask = r23 ; holds a useful bitmask
+                                 .DEF rtxonseq = r24 ; holds the current on seq
+                                 .DEF rtxoffseq = r25 ; holds the current off seq
+                                 ;.DEF rnotelength = r26 ; the time to play the note
+                                 ;.DEF rnotelength =  XH ;
+                                 #define rnotelength XH
+                                 
+                                 .EQU rxpin = PB2
+                                 .EQU txpin = PB1
+                                 .EQU sppin = PB0
+                                 
+                                 .EQU noteAb = 9632
+                                 .EQU noteBb = 8580
+                                 .EQU noteC = 7644
+                                 .EQU noteDb = 7215
+                                 .EQU noteEb = 6428
+                                 .EQU noteF = 5728
+                                 .EQU noteAbp = 4816
+                                 
+                                 .EQU onebeat = 3
+                                 .EQU twobeat = 6
+                                 .EQU threebeat = 9
+                                 .EQU fourbeat = 12
+                                 .EQU sixbeat = 18
+                                 .EQU littlepause = 3
+                                 
+                                 ; data stored in SRAM
+                                 ; these are SRAM addresses
+                                 ; the start signal length
+                                 .EQU startOn = SRAM_START
+                                 .EQU startOff = SRAM_START+1
+                                 ; longest on and off times
+                                 .EQU longon = SRAM_START+2
+                                 .EQU longoff = SRAM_START+3
+                                 .EQU shorton = SRAM_START+4
+                                 .EQU shortoff = SRAM_START+5
+                                 .EQU onseq1 = SRAM_START+6
+                                 .EQU onseq2 = SRAM_START+7
+                                 .EQU onseq3 = SRAM_START+8
+                                 .EQU onseq4 = SRAM_START+9
+                                 .EQU onseq5 = SRAM_START+10
+                                 .EQU onseq6 = SRAM_START+11
+                                 .EQU onseq7 = SRAM_START+12
+                                 .EQU onseq8 = SRAM_START+13
+                                 .EQU offseq1 = SRAM_START+14
+                                 .EQU offseq2 = SRAM_START+15
+                                 .EQU offseq3 = SRAM_START+16
+                                 .EQU offseq4 = SRAM_START+17
+                                 .EQU offseq5 = SRAM_START+18
+                                 .EQU offseq6 = SRAM_START+19
+                                 .EQU offseq7 = SRAM_START+20
+                                 .EQU offseq8 = SRAM_START+21
+                                 
+                                 .CSEG ; code section
+                                 .ORG $0000 ; the start address
+                                     ; interrupt vectors
+000000 c00a                          rjmp main ; reset vector
+000001 9518                          reti ; external interrupt 0
+000002 9518                          reti ; pin change
+000003 9518                          reti ; timer input capture
+000004 9518                          reti ; timer overflow
+000005 9518                          reti ; timer compare match A
+000006 9518                          reti ; timer compare match B
+000007 9518                          reti ; analog comparator
+000008 9518                          reti ; watchdog timer
+000009 9518                          reti ; Vcc voltage level monitor
+00000a 9518                          reti ; ADC conversion complete
+                                 
+                                 ; interrupt service routines
+                                 ;isr_pcint:
+                                     ;reti ; return and enable int
+                                 
+                                 main:
+                                     ; set up the stack
+00000b e000                          ldi r16, HIGH(RAMEND)
+00000c bf0e                          out SPH, r16
+00000d e50f                          ldi r16, LOW(RAMEND)
+00000e bf0d                          out SPL, r16
+                                 
+                                     ; set clock divider
+00000f e000                          ldi r16, 0x00 ; clock divided by 1
+000010 ed18                          ldi r17, 0xD8 ; the key for CCP
+000011 bf1c                          out CCP, r17 ; Configuration Change Protection, allows protected changes
+000012 bf06                          out CLKPSR, r16 ; sets the clock divider
+                                 
+                                     ; setup pins
+000013 e003                          ldi r16, (1<<txpin)|(1<<sppin)
+000014 b901                          out DDRB, r16
+                                 
+                                     ; setup interrupt
+000015 e001                          ldi r16, 1
+000016 bb02                          out PCICR, r16
+000017 e004                          ldi r16, (1<<PCINT2)
+000018 bb00                          out PCMSK, r16
+                                    
+                                     ; enable sleep
+000019 e005                          ldi r16, (1<<SM1)|(1<<SE) ; power down sleep
+00001a bf0a                          out SMCR, r16
+                                 
+                                     ; delay for a second to let things settle
+00001b e10f                          ldi r16, 0x1F
+00001c d1b6                          rcall tripledelayr16
+                                 
+00001d d014                          rcall resetData
+                                 
+00001e 9478                          sei
+                                    
+                                 ; main loop
+                                 loop:
+                                     ; wait for input
+00001f 9588                          sleep
+000020 0000                          nop
+000021 94f8                          cli
+                                    
+                                     ; if it was just noise
+000022 9902                          sbic PINB, rxpin
+000023 c00b                          rjmp endLoop
+                                 
+                                     ; Receive
+000024 d011                          rcall receive
+                                     ;rcall adjustdata
+                                    
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 
+                                     ;wait about 30 seconds
+000025 ef0f                          ldi r16, 0xFF
+000026 d1ac                          rcall tripledelayr16
+000027 ef0f                          ldi r16, 0xFF
+000028 d1aa                          rcall tripledelayr16
+000029 ef0f                          ldi r16, 0xFF
+00002a d1a8                          rcall tripledelayr16
+                                 
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                     ; transmit the sequence
+00002b d0e5                          rcall transmit
+                                 
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                     ; wait
+00002c e10f                          ldi r16, 0x1F
+00002d d1a5                          rcall tripledelayr16
+                                 
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+00002e d130                          rcall play
+                                 
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 endLoop:
+00002f d002                          rcall resetData
+000030 9478                          sei
+000031 cfed                          rjmp loop
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 
+                                 resetData:
+000032 2733                          clr rinLength
+000033 2744                          clr rinStop
+000034 e071                          ldi rseqbitmask, 1
+                                 
+000035 9508                          ret
+                                 
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 receive:
+                                     ; at this point we are in the start bit
+                                     ; wait for rise
+000036 d0b3                          rcall timeOn
+000037 a960                          sts startOn, rrxtimer
+                                 
+                                     ; wait for fall
+000038 d0bb                          rcall timeOff
+000039 a961                          sts startOff, rrxtimer
+                                 
+                                     ; time the first bit
+00003a d0af                          rcall timeOn
+00003b fd40                          sbrc rinStop, 0
+00003c c0ac                          rjmp finishedReceiving
+00003d e021                          ldi r18, 1
+00003e a926                          sts onseq1, r18
+00003f a962                          sts longon, rrxtimer
+000040 a964                          sts shorton, rrxtimer
+                                 
+000041 d0b2                          rcall timeOff
+000042 fd40                          sbrc rinStop, 0
+000043 c0a5                          rjmp finishedreceiving
+000044 e021                          ldi r18, 1
+000045 a92e                          sts offseq1, r18
+000046 a963                          sts longoff, rrxtimer
+000047 a965                          sts shortoff, rrxtimer
+                                 
+000048 9533                          inc rinlength
+000049 0f77                          lsl rseqbitmask
+                                 
+                                     ; time the rest of the bits
+                                 receiveBits:
+00004a d09f                          rcall timeOn
+                                 
+00004b fd40                          sbrc rinStop, 0
+00004c c09c                          rjmp finishedReceiving
+                                 
+                                     ; load up the current sequence
+00004d a186                          lds rtxonseq, onseq1
+00004e a19e                          lds rtxoffseq, offseq1
+00004f 3038                          cpi rinLength, 8
+000050 f0d0                          brlo sequenceloaded
+000051 a187                          lds rtxonseq, onseq2
+000052 a19f                          lds rtxoffseq, offseq2
+000053 3130                          cpi rinLength, 16
+000054 f0b0                          brlo sequenceloaded
+000055 a188                          lds rtxonseq, onseq3
+000056 a390                          lds rtxoffseq, offseq3
+000057 3138                          cpi rinLength, 24
+000058 f090                          brlo sequenceloaded
+000059 a189                          lds rtxonseq, onseq4
+00005a a391                          lds rtxoffseq, offseq4
+00005b 3230                          cpi rinLength, 32
+00005c f070                          brlo sequenceloaded
+00005d a18a                          lds rtxonseq, onseq5
+00005e a392                          lds rtxoffseq, offseq5
+00005f 3238                          cpi rinLength, 40
+000060 f050                          brlo sequenceloaded
+000061 a18b                          lds rtxonseq, onseq6
+000062 a393                          lds rtxoffseq, offseq6
+000063 3330                          cpi rinLength, 48
+000064 f030                          brlo sequenceloaded
+000065 a18c                          lds rtxonseq, onseq7
+000066 a394                          lds rtxoffseq, offseq7
+000067 3338                          cpi rinLength, 56
+000068 f010                          brlo sequenceloaded
+000069 a18d                          lds rtxonseq, onseq8
+00006a a395                          lds rtxoffseq, offseq8
+                                 
+                                 sequenceloaded:
+                                    
+                                     ; check against longest
+00006b a152                          lds rlongshort, longon
+00006c 1756                          cp rlongshort, rrxtimer
+                                     ;not longer
+00006d f4a0                          brsh notlonger
+                                     ;longer
+00006e 2f25                          mov r18, rlongshort
+00006f 9526                          lsr r18
+000070 0f25                          add r18, rlongshort
+000071 1762                          cp rrxtimer, r18
+000072 ff41                          sbrs rinstop, 1
+                                     ;new 1 level (more than 1.5*long)
+000073 f418                          brsh newonelevel
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                     ;just a little longer. set as longest and set 1
+                                 setlongestandsetoneon:
+000074 a962                          sts longon, rrxtimer
+                                 setoneon:
+000075 2b87                          or rtxonseq, rseqbitmask
+000076 c01a                          rjmp onbitdone
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 newonelevel:
+000077 6042                          sbr rinstop, 2
+                                     ; all previous bits must be zero
+000078 2788                          clr rtxonseq
+000079 a986                          sts onseq1, rtxonseq
+00007a a987                          sts onseq2, rtxonseq
+00007b a988                          sts onseq3, rtxonseq
+00007c a989                          sts onseq4, rtxonseq
+00007d a98a                          sts onseq5, rtxonseq
+00007e a98b                          sts onseq6, rtxonseq
+00007f a98c                          sts onseq7, rtxonseq
+000080 a98d                          sts onseq8, rtxonseq
+                                 
+000081 cff2                          rjmp setlongestandsetoneon
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 notlonger:
+                                     ; compare against shortest
+000082 a154                          lds rlongshort, shorton
+000083 1756                          cp rlongshort, rrxtimer
+000084 f008                          brlo notlongersetvalue
+000085 a964                          sts shorton, rrxtimer
+                                 notlongersetvalue:
+                                     ;if much shorter than longest
+000086 a122                          lds r18, longon
+000087 2f12                          mov r17, r18
+000088 9526                          lsr r18
+000089 9526                          lsr r18
+00008a 1b12                          sub r17, r18
+00008b 1716                          cp r17, rrxtimer
+                                     ;zero bit if less than 0.75*long
+00008c f340                          brlo setoneon
+                                 
+                                 setzeroon:
+00008d 6042                          sbr rinstop, 2
+00008e 2f17                          mov r17, rseqbitmask
+00008f 9510                          com r17
+000090 2381                          and rtxonseq, r17
+                                 
+                                 onbitdone:
+                                     ; the bit is set, now for the off time
+                                 
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                    
+000091 d062                          rcall timeOff
+                                 
+000092 fd40                          sbrc rinStop, 0
+000093 c026                          rjmp offbitdone
+                                 
+                                     ; check against longest
+000094 a153                          lds rlongshort, longoff
+000095 1756                          cp rlongshort, rrxtimer
+                                     ;not longer
+000096 f4a0                          brsh notlongeroff
+                                     ;longer
+000097 2f25                          mov r18, rlongshort
+000098 9526                          lsr r18
+000099 0f25                          add r18, rlongshort
+00009a 1762                          cp rrxtimer, r18
+00009b ff42                          sbrs rinstop, 2
+                                     ;new 1 level (more than 1.5*long)
+00009c f418                          brsh newoneleveloff
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                     ;just a little longer. set as longest and set 1
+                                 setlongestandsetoneoff:
+00009d a963                          sts longoff, rrxtimer
+                                 setoneoff:
+00009e 2b97                          or rtxoffseq, rseqbitmask
+00009f c01a                          rjmp offbitdone
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 newoneleveloff:
+0000a0 6044                          sbr rinstop, 4
+                                 
+0000a1 2799                          clr rtxoffseq
+0000a2 a99e                          sts offseq1, rtxoffseq
+0000a3 a99f                          sts offseq2, rtxoffseq
+0000a4 ab90                          sts offseq3, rtxoffseq
+0000a5 ab91                          sts offseq4, rtxoffseq
+0000a6 ab92                          sts offseq5, rtxoffseq
+0000a7 ab93                          sts offseq6, rtxoffseq
+0000a8 ab94                          sts offseq7, rtxoffseq
+0000a9 ab95                          sts offseq8, rtxoffseq
+                                 
+0000aa cff2                          rjmp setlongestandsetoneoff
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 notlongeroff:
+                                     ; compare against shortest
+0000ab a155                          lds rlongshort, shortoff
+0000ac 1756                          cp rlongshort, rrxtimer
+0000ad f008                          brlo notlongersetvalueoff
+0000ae a965                          sts shortoff, rrxtimer
+                                 notlongersetvalueoff:
+                                     ;if much shorter than longest
+0000af a123                          lds r18, longoff
+0000b0 2f12                          mov r17, r18
+0000b1 9526                          lsr r18
+0000b2 9526                          lsr r18
+0000b3 1b12                          sub r17, r18
+0000b4 1716                          cp r17, rrxtimer
+                                     ;zero bit if less than 0.75*long
+0000b5 f340                          brlo setoneoff
+                                 
+                                 setzerooff:
+0000b6 6044                          sbr rinstop, 4
+0000b7 2f17                          mov r17, rseqbitmask
+0000b8 9510                          com r17
+0000b9 2391                          and rtxoffseq, r17
+                                 
+                                 offbitdone:
+                                     ; store the sequence
+0000ba 3038                          cpi rinLength, 8
+0000bb f068                          brlo stsseq1
+0000bc 3130                          cpi rinLength, 16
+0000bd f070                          brlo stsseq2
+0000be 3138                          cpi rinLength, 24
+0000bf f078                          brlo stsseq3
+0000c0 3230                          cpi rinLength, 32
+0000c1 f080                          brlo stsseq4
+0000c2 3238                          cpi rinLength, 40
+0000c3 f088                          brlo stsseq5
+0000c4 3330                          cpi rinLength, 48
+0000c5 f090                          brlo stsseq6
+0000c6 3338                          cpi rinLength, 56
+0000c7 f098                          brlo stsseq7
+0000c8 c015                          rjmp stsseq8
+                                 
+                                 stsseq1:
+0000c9 a986                          sts onseq1, rtxonseq
+0000ca a99e                          sts offseq1, rtxoffseq
+0000cb c014                          rjmp sequencestored
+                                 stsseq2:
+0000cc a987                          sts onseq2, rtxonseq
+0000cd a99f                          sts offseq2, rtxoffseq
+0000ce c011                          rjmp sequencestored
+                                 stsseq3:
+0000cf a988                          sts onseq3, rtxonseq
+0000d0 ab90                          sts offseq3, rtxoffseq
+0000d1 c00e                          rjmp sequencestored
+                                 stsseq4:
+0000d2 a989                          sts onseq4, rtxonseq
+0000d3 ab91                          sts offseq4, rtxoffseq
+0000d4 c00b                          rjmp sequencestored
+                                 stsseq5:
+0000d5 a98a                          sts onseq5, rtxonseq
+0000d6 ab92                          sts offseq5, rtxoffseq
+0000d7 c008                          rjmp sequencestored
+                                 stsseq6:
+0000d8 a98b                          sts onseq6, rtxonseq
+0000d9 ab93                          sts offseq6, rtxoffseq
+0000da c005                          rjmp sequencestored
+                                 stsseq7:
+0000db a98c                          sts onseq7, rtxonseq
+0000dc ab94                          sts offseq7, rtxoffseq
+0000dd c002                          rjmp sequencestored
+                                 stsseq8:
+0000de a98d                          sts onseq8, rtxonseq
+0000df ab95                          sts offseq8, rtxoffseq
+                                 
+                                 sequencestored:
+                                     ; the bit is set, now update count and bitmask and do the next bit
+0000e0 9533                          inc rinlength
+0000e1 3430                          cpi rinlength, 64
+0000e2 f430                          brsh finishedreceiving
+0000e3 fd40                          sbrc rinstop, 0
+0000e4 c004                          rjmp finishedreceiving
+                                 
+0000e5 0f77                          lsl rseqbitmask
+0000e6 f409                          brne gobacktoreceivebits
+0000e7 e071                          ldi rseqbitmask, 1
+                                 gobacktoreceivebits:
+0000e8 cf61                          rjmp receivebits
+                                    
+                                 finishedReceiving:
+0000e9 9508                          ret
+                                 
+                                 timeOn:
+                                     ; each tic is 400 cycles(50us) timeout at 12ms
+0000ea e060                          ldi rrxtimer, 0x00
+                                 timeOnLoop:
+0000eb e803                          ldi r16, 131 ; 393 cycles
+                                 timeOnDelay:
+0000ec 5001                          subi r16, 1
+0000ed f7f1                          brne timeOnDelay
+                                 
+0000ee 9563                          inc rrxtimer
+0000ef 3f6f                          cpi rrxtimer, 0xFF
+0000f0 f069                          breq escapeReceive
+0000f1 9b02                          sbis PINB, rxpin
+0000f2 cff8                          rjmp timeOnLoop
+0000f3 9508                          ret
+                                 
+                                 timeOff:
+                                     ; each tic is 400 cycles(50us) timeout at 12ms
+0000f4 e060                          ldi rrxtimer, 0x00
+                                 timeOffLoop:
+0000f5 e803                          ldi r16, 131 ; 393 cycles
+                                 timeOffDelay:
+0000f6 5001                          subi r16, 1
+0000f7 f7f1                          brne timeOffDelay
+                                 
+0000f8 9563                          inc rrxtimer
+0000f9 3f6f                          cpi rrxtimer, 0xFF
+0000fa f019                          breq escapeReceive
+0000fb 9902                          sbic PINB, rxpin
+0000fc cff8                          rjmp timeOffLoop
+0000fd 9508                          ret
+                                 
+                                 escapeReceive:
+0000fe e041                          ldi rinStop, 1
+0000ff 9508                          ret
+                                 
+                                 adjustdata:
+                                     ; if not confirmed 1, average long and short
+000100 ff41                          sbrs rinstop, 1
+000101 c006                          rjmp dontaverageon
+000102 a104                          lds r16, shorton
+000103 a112                          lds r17, longon
+000104 0f10                          add r17, r16
+000105 9516                          lsr r17
+000106 a914                          sts shorton, r17
+000107 a912                          sts longon, r17
+                                 
+                                 dontaverageon:
+000108 ff42                          sbrs rinstop, 2
+000109 c006                          rjmp dontaverageoff
+00010a a105                          lds r16, shortoff
+00010b a113                          lds r17, longoff
+00010c 0f10                          add r17, r16
+00010d 9516                          lsr r17
+00010e a915                          sts shortoff, r17
+00010f a913                          sts longoff, r17
+                                 
+                                 dontaverageoff:
+000110 9508                          ret
+                                 
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 transmit:
+                                     ; start on
+000111 a160                          lds rrxtimer, starton
+000112 d038                          rcall txtime
+                                 
+                                     ; start off
+000113 a161                          lds rrxtimer, startoff
+000114 d045                          rcall offtime
+                                 
+                                     ; then the data
+000115 ef4f                          ldi rinstop, 0xFF
+                                    
+                                 txloadseq1:
+000116 a186                          lds rtxonseq, onseq1
+000117 a19e                          lds rtxoffseq, offseq1
+000118 c015                          rjmp txbitloop
+                                 txloadseq2:
+000119 a187                          lds rtxonseq, onseq2
+00011a a19f                          lds rtxoffseq, offseq2
+00011b c012                          rjmp txbitloop
+                                 txloadseq3:
+00011c a188                          lds rtxonseq, onseq3
+00011d a390                          lds rtxoffseq, offseq3
+00011e c00f                          rjmp txbitloop
+                                 txloadseq4:
+00011f a189                          lds rtxonseq, onseq4
+000120 a391                          lds rtxoffseq, offseq4
+000121 c00c                          rjmp txbitloop
+                                 txloadseq5:
+000122 a18a                          lds rtxonseq, onseq5
+000123 a392                          lds rtxoffseq, offseq5
+000124 c009                          rjmp txbitloop
+                                 txloadseq6:
+000125 a18b                          lds rtxonseq, onseq6
+000126 a393                          lds rtxoffseq, offseq6
+000127 c006                          rjmp txbitloop
+                                 txloadseq7:
+000128 a18c                          lds rtxonseq, onseq7
+000129 a394                          lds rtxoffseq, offseq7
+00012a c003                          rjmp txbitloop
+                                 txloadseq8:
+00012b a18d                          lds rtxonseq, onseq8
+00012c a395                          lds rtxoffseq, offseq8
+00012d c000                          rjmp txbitloop
+                                 
+                                 txbitloop:
+00012e 9543                          inc rinstop
+00012f 1743                          cp rinstop, rinlength
+000130 f4c8                          brsh endtransmission
+                                 
+                                     ; tx on
+000131 a164                          lds rrxtimer, shorton
+000132 fd80                          sbrc rtxonseq, 0
+000133 a162                          lds rrxtimer, longon
+000134 d016                          rcall txtime
+                                 
+                                     ; tx off
+000135 a165                          lds rrxtimer, shortoff
+000136 fd90                          sbrc rtxoffseq, 0
+000137 a163                          lds rrxtimer, longoff
+000138 d021                          rcall offtime
+                                 
+000139 3047                          cpi rinstop, 7
+00013a f2f1                          breq txloadseq2
+00013b 304f                          cpi rinstop, 15
+00013c f2f9                          breq txloadseq3
+00013d 3147                          cpi rinstop, 23
+00013e f301                          breq txloadseq4
+00013f 314f                          cpi rinstop, 31
+000140 f309                          breq txloadseq5
+000141 3247                          cpi rinstop, 39
+000142 f311                          breq txloadseq6
+000143 324f                          cpi rinstop, 47
+000144 f319                          breq txloadseq7
+000145 3347                          cpi rinstop, 55
+000146 f321                          breq txloadseq8
+                                 
+000147 9586                          lsr rtxonseq
+000148 9596                          lsr rtxoffseq
+000149 cfe4                          rjmp txbitloop
+                                 
+                                 endtransmission:
+00014a 9508                          ret
+                                 
+                                 
+                                 txtime:
+00014b e012                          ldi r17, (1<<txpin)
+                                 txtimeLoop:
+                                     ; toggle txpin every 105 cycles
+                                     ; do this 4 times for each tic
+                                     ; use delayr16 with 32 (0x20) for 103 cycles (use 30(0x1E) with other stuff)
+00014c d007                          rcall txtoggle
+00014d d006                          rcall txtoggle
+00014e d005                          rcall txtoggle
+00014f d004                          rcall txtoggle
+                                 
+000150 956a                          dec rrxtimer
+000151 f7d1                          brne txtimeLoop
+                                 
+000152 9811                          cbi PORTB, txpin
+000153 9508                          ret
+                                 
+                                 txtoggle:
+000154 e10b                          ldi r16, 0x1B ; use 0x1B for about 100 cycles total.
+000155 d07a                          rcall delayr16
+000156 b122                          in r18, PORTB
+000157 2721                          eor r18, r17
+000158 b922                          out PORTB, r18
+000159 9508                          ret
+                                 
+                                 offtime:
+                                     ; do nothing for rrxtimer * 400 cycles
+00015a e801                          ldi r16, 129
+00015b d074                          rcall delayr16
+00015c 956a                          dec rrxtimer
+00015d f7e1                          brne offtime
+00015e 9508                          ret
+                                 
+                                 play:
+                                     ; load each note and call playnote
+                                     ; note is stored in r17:r16
+                                     ; timing is stored in r18
+                                     ;
+                                     ; delay some time for rests
+                                     ;
+                                     ;notes:
+                                     ;Ab Bb Db Bb F F Eb
+                                     ;Ab Bb Db Bb Eb Eb Db
+                                     ;Ab Bb Db Bb Db Eb C Bb Ab Ab Eb Db
+                                     ;Ab Bb Db Bb F F Eb
+                                     ;Ab Bb Db Bb Ab+ C Db C Bb
+                                     ;Ab Bb Db Bb Db Eb C Bb Ab Ab Eb Db
+                                     ;
+                                     ;freq.
+                                     ;Ab = 415.3
+                                     ;Bb = 466.2
+                                     ;Db = 554.4
+                                     ;F = 698.3
+                                     ;Eb = 622.3
+                                     ;C = 523.3
+                                     ;Ab+ = 830.6
+                                     ;
+                                     ;8MHz, 1prescaler
+                                     ;Ab = 9632
+                                     ;Bb = 8580
+                                     ;Db = 7215
+                                     ;F = 5728
+                                     ;Eb = 6428
+                                     ;C = 7644
+                                     ;Ab+ = 4816
+                                 
+                                     ; setup timer
+                                     ; CTC with prescaler 1
+00015f e400                          ldi r16, (1<<COM0A0)
+000160 bd0e                          out TCCR0A, r16
+                                 
+000161 d02f                          rcall playABDB
+000162 d022                          rcall playFFE
+                                 
+000163 d02d                          rcall playABDB
+000164 e0b6                          ldi rnotelength, twobeat
+000165 d053                          rcall playEb
+000166 e003                          ldi r16, littlepause
+000167 d06b                          rcall tripledelayr16
+000168 d050                          rcall playEb
+000169 e003                          ldi r16, littlepause
+00016a d068                          rcall tripledelayr16
+00016b e1b2                          ldi rnotelength, sixbeat
+00016c d048                          rcall playDb
+                                 
+00016d e003                          ldi r16, littlepause
+00016e d064                          rcall tripledelayr16
+                                 
+00016f d021                          rcall playABDB
+000170 d026                          rcall playDECBAAED
+                                 
+000171 d01f                          rcall playABDB
+000172 d012                          rcall playFFE
+                                 
+000173 d01d                          rcall playABDB
+000174 e0b6                          ldi rnotelength, twobeat
+000175 d04b                          rcall playAbp
+000176 e003                          ldi r16, littlepause
+000177 d05b                          rcall tripledelayr16
+000178 d038                          rcall playC
+000179 e003                          ldi r16, littlepause
+00017a d058                          rcall tripledelayr16
+00017b e0bc                          ldi rnotelength, fourbeat
+00017c d038                          rcall playDb
+00017d e0b3                          ldi rnotelength, onebeat
+00017e d032                          rcall playC
+00017f d02d                          rcall playBb
+                                 
+000180 e003                          ldi r16, littlepause
+000181 d051                          rcall tripledelayr16
+                                 
+000182 d00e                          rcall playABDB
+000183 d013                          rcall playDECBAAED
+                                 
+000184 9508                          ret
+                                 
+                                 playFFE:
+000185 e0b6                          ldi rnotelength, twobeat
+000186 d036                          rcall playF
+000187 e003                          ldi r16, littlepause
+000188 d04a                          rcall tripledelayr16
+000189 d033                          rcall playF
+00018a e003                          ldi r16, littlepause
+00018b d047                          rcall tripledelayr16
+00018c e1b2                          ldi rnotelength, sixbeat
+00018d d02b                          rcall playEb
+                                    
+00018e e003                          ldi r16, littlepause
+00018f d043                          rcall tripledelayr16
+000190 9508                          ret
+                                 
+                                 playABDB:
+000191 e0b3                          ldi rnotelength, onebeat
+000192 d016                          rcall playAb
+000193 d019                          rcall playBb
+000194 d020                          rcall playDb
+000195 d017                          rcall playBb
+000196 9508                          ret
+                                 
+                                 playDECBAAED:
+000197 e0b9                          ldi rnotelength, threebeat
+000198 d01c                          rcall playDb
+000199 d01f                          rcall playEb
+00019a e0b9                          ldi rnotelength, threebeat
+00019b d015                          rcall playC
+00019c e0b3                          ldi rnotelength, onebeat
+00019d d00f                          rcall playBb
+00019e e0b6                          ldi rnotelength, twobeat
+00019f d009                          rcall playAb
+0001a0 e003                          ldi r16, littlepause
+0001a1 d031                          rcall tripledelayr16
+0001a2 d006                          rcall playAb
+0001a3 e0bc                          ldi rnotelength, fourbeat
+0001a4 d014                          rcall playEb
+0001a5 d00f                          rcall playDb
+                                 
+0001a6 e003                          ldi r16, littlepause
+0001a7 d02b                          rcall tripledelayr16
+0001a8 9508                          ret
+                                 
+                                 playAb:
+0001a9 e215                          ldi r17, HIGH(noteAb)
+0001aa ea00                          ldi r16, LOW(noteAb)
+0001ab d019                          rcall playnote
+0001ac 9508                          ret
+                                 
+                                 playBb:
+0001ad e211                          ldi r17, HIGH(noteBb)
+0001ae e804                          ldi r16, LOW(noteBb)
+0001af d015                          rcall playnote
+0001b0 9508                          ret
+                                 
+                                 playC:
+0001b1 e11d                          ldi r17, HIGH(noteC)
+0001b2 ed0c                          ldi r16, LOW(noteC)
+0001b3 d011                          rcall playnote
+0001b4 9508                          ret
+                                 
+                                 playDb:
+0001b5 e11c                          ldi r17, HIGH(noteDb)
+0001b6 e20f                          ldi r16, LOW(noteDb)
+0001b7 d00d                          rcall playnote
+0001b8 9508                          ret
+                                 
+                                 playEb:
+0001b9 e119                          ldi r17, HIGH(noteEb)
+0001ba e10c                          ldi r16, LOW(noteEb)
+0001bb d009                          rcall playnote
+0001bc 9508                          ret
+                                 
+                                 playF:
+0001bd e116                          ldi r17, HIGH(noteF)
+0001be e600                          ldi r16, LOW(noteF)
+0001bf d005                          rcall playnote
+0001c0 9508                          ret
+                                 
+                                 playAbp:
+0001c1 e112                          ldi r17, HIGH(noteAbp)
+0001c2 ed00                          ldi r16, LOW(noteAbp)
+0001c3 d001                          rcall playnote
+0001c4 9508                          ret
+                                 
+                                 playnote:
+0001c5 bd17                          out OCR0AH, r17
+0001c6 bd06                          out OCR0AL, r16
+0001c7 e009                          ldi r16, (1<<WGM02)|(1<<CS00) ;this turns it on
+0001c8 bd0d                          out TCCR0B, r16
+                                 
+0001c9 2f0b                          mov r16, rnotelength
+0001ca d008                          rcall tripledelayr16
+                                 
+0001cb e008                          ldi r16, (1<<WGM02) ;this turns it off
+0001cc bd0d                          out TCCR0B, r16
+0001cd e000                          ldi r16, 0
+0001ce b902                          out PORTB, r16
+                                 
+0001cf 9508                          ret
+                                 
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 ; utilities
+                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                 
+                                 ; short delay loop, 3 * r16 + 7 cycles (1~96us)
+                                 delayr16:
+0001d0 5001                          subi r16, 1
+0001d1 f7f1                          brne delayr16
+0001d2 9508                          ret
+                                 
+                                 ; long delay loop, 5 * r16 * 0xff * 0xff + 16 cycles (40642~10363361us)
+                                 tripledelayr16:
+0001d3 931f                          push r17
+0001d4 932f                          push r18
+0001d5 ef1f                          ldi r17, 0xFF
+0001d6 ef2f                          ldi r18, 0xFF
+                                 tripledelayr16Loop:
+0001d7 5021                          subi r18, 1
+0001d8 4010                          sbci r17, 0
+0001d9 4000                          sbci r16, 0
+0001da f7e1                          brne tripledelayr16Loop
+0001db 912f                          pop r18
+0001dc 911f                          pop r17
+
+
+RESOURCE USE INFORMATION
+------------------------
+
+Notice:
+The register and instruction counts are symbol table hit counts,
+and hence implicitly used resources are not counted, eg, the
+'lpm' instruction without operands implicitly uses r0 and z,
+none of which are counted.
+
+x,y,z are separate entities in the symbol table and are
+counted separately from r26..r31 here.
+
+.dseg memory usage only counts static data declared with .byte
+
+"ATtiny10" register use summary:
+x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
+r13:   0 r14:   0 r15:   0 r16:  59 r17:  38 r18:  29 r19:  19 r20:  25 
+r21:  12 r22:  32 r23:   8 r24:  37 r25:  37 r26:   0 r27:  14 r28:   0 
+r29:   0 r30:   0 r31:   0 
+Registers used: 11 out of 35 (31.4%)
+
+"ATtiny10" instruction use summary:
+.lds.l:   0 .sts.l:   0 adc   :   0 add   :   4 and   :   2 andi  :   0 
+asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 brcc  :   0 
+brcs  :   0 breq  :   9 brge  :   0 brhc  :   0 brhs  :   0 brid  :   0 
+brie  :   0 brlo  :  18 brlt  :   0 brmi  :   0 brne  :   7 brpl  :   0 
+brsh  :   6 brtc  :   0 brts  :   0 brvc  :   0 brvs  :   0 bset  :   0 
+bst   :   0 cbi   :   1 cbr   :   0 clc   :   0 clh   :   0 cli   :   1 
+cln   :   0 clr   :   4 cls   :   0 clt   :   0 clv   :   0 clz   :   0 
+com   :   2 cp    :   9 cpc   :   0 cpi   :  24 cpse  :   0 dec   :   2 
+eor   :   1 icall :   0 ijmp  :   0 in    :   1 inc   :   5 ld    :   0 
+ldd   :   0 ldi   :  70 lds   :  96 lsl   :   2 lsr   :  10 mov   :   7 
+neg   :   0 nop   :   1 or    :   2 ori   :   0 out   :  15 pop   :   2 
+push  :   2 rcall :  78 ret   :  24 reti  :  10 rjmp  :  34 rol   :   0 
+ror   :   0 sbc   :   0 sbci  :   2 sbi   :   0 sbic  :   2 sbis  :   1 
+sbr   :   4 sbrc  :   7 sbrs  :   4 sec   :   0 seh   :   0 sei   :   2 
+sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 sez   :   0 
+sleep :   1 st    :   0 std   :   0 sts   :  96 sub   :   2 subi  :   4 
+swap  :   0 tst   :   0 wdr   :   0 
+Instructions used: 41 out of 99 (41.4%)
+
+"ATtiny10" memory use summary [bytes]:
+Segment   Begin    End      Code   Data   Used    Size   Use%
+---------------------------------------------------------------
+[.cseg] 0x000000 0x0003bc    956      0    956    1024  93.4%
+[.dseg] 0x000040 0x000060      0      0      0      32   0.0%
+[.eseg] 0x000000 0x000000      0      0      0       0      -
+
+Assembly complete, 0 errors, 0 warnings

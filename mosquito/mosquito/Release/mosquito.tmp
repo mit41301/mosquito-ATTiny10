@@ -1,0 +1,98 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.7</VERSION>
+ <DEVICE>"ATtiny10"</DEVICE>
+ <WORKING_DIR>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\Release</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc\tn10def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\Release\mosquito.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>mosquito.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>mosquito.map</FILE>
+  <FILE>mosquito.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <main><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>118</LINE></main>
+  <tripledelayr16><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>846</LINE></tripledelayr16>
+  <resetData><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>197</LINE></resetData>
+  <loop><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>154</LINE></loop>
+  <endLoop><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>191</LINE></endLoop>
+  <receive><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>205</LINE></receive>
+  <transmit><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>532</LINE></transmit>
+  <play><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>650</LINE></play>
+  <timeOn><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>471</LINE></timeOn>
+  <timeOff><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>487</LINE></timeOff>
+  <finishedReceiving><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>468</LINE></finishedReceiving>
+  <receiveBits><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>236</LINE></receiveBits>
+  <sequenceloaded><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>274</LINE></sequenceloaded>
+  <notlonger><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>312</LINE></notlonger>
+  <newonelevel><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>297</LINE></newonelevel>
+  <setlongestandsetoneon><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>291</LINE></setlongestandsetoneon>
+  <setoneon><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>293</LINE></setoneon>
+  <onbitdone><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>335</LINE></onbitdone>
+  <notlongersetvalue><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>318</LINE></notlongersetvalue>
+  <setzeroon><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>329</LINE></setzeroon>
+  <offbitdone><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>404</LINE></offbitdone>
+  <notlongeroff><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>381</LINE></notlongeroff>
+  <newoneleveloff><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>366</LINE></newoneleveloff>
+  <setlongestandsetoneoff><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>360</LINE></setlongestandsetoneoff>
+  <setoneoff><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>362</LINE></setoneoff>
+  <notlongersetvalueoff><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>387</LINE></notlongersetvalueoff>
+  <setzerooff><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>398</LINE></setzerooff>
+  <stsseq1><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>422</LINE></stsseq1>
+  <stsseq2><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>426</LINE></stsseq2>
+  <stsseq3><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>430</LINE></stsseq3>
+  <stsseq4><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>434</LINE></stsseq4>
+  <stsseq5><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>438</LINE></stsseq5>
+  <stsseq6><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>442</LINE></stsseq6>
+  <stsseq7><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>446</LINE></stsseq7>
+  <stsseq8><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>450</LINE></stsseq8>
+  <sequencestored><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>454</LINE></sequencestored>
+  <gobacktoreceivebits><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>465</LINE></gobacktoreceivebits>
+  <timeOnLoop><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>474</LINE></timeOnLoop>
+  <timeOnDelay><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>476</LINE></timeOnDelay>
+  <escapeReceive><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>503</LINE></escapeReceive>
+  <timeOffLoop><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>490</LINE></timeOffLoop>
+  <timeOffDelay><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>492</LINE></timeOffDelay>
+  <adjustdata><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>507</LINE></adjustdata>
+  <dontaverageon><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>518</LINE></dontaverageon>
+  <dontaverageoff><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>528</LINE></dontaverageoff>
+  <txtime><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>617</LINE></txtime>
+  <offtime><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>642</LINE></offtime>
+  <txloadseq1><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>544</LINE></txloadseq1>
+  <txbitloop><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>577</LINE></txbitloop>
+  <txloadseq2><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>548</LINE></txloadseq2>
+  <txloadseq3><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>552</LINE></txloadseq3>
+  <txloadseq4><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>556</LINE></txloadseq4>
+  <txloadseq5><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>560</LINE></txloadseq5>
+  <txloadseq6><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>564</LINE></txloadseq6>
+  <txloadseq7><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>568</LINE></txloadseq7>
+  <txloadseq8><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>572</LINE></txloadseq8>
+  <endtransmission><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>613</LINE></endtransmission>
+  <txtimeLoop><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>619</LINE></txtimeLoop>
+  <txtoggle><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>634</LINE></txtoggle>
+  <delayr16><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>840</LINE></delayr16>
+  <playABDB><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>748</LINE></playABDB>
+  <playFFE><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>733</LINE></playFFE>
+  <playEb><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>801</LINE></playEb>
+  <playDb><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>795</LINE></playDb>
+  <playDECBAAED><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>756</LINE></playDECBAAED>
+  <playAbp><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>813</LINE></playAbp>
+  <playC><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>789</LINE></playC>
+  <playBb><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>783</LINE></playBb>
+  <playF><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>807</LINE></playF>
+  <playAb><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>777</LINE></playAb>
+  <playnote><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>819</LINE></playnote>
+  <tripledelayr16Loop><FILE>C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm</FILE><LINE>851</LINE></tripledelayr16Loop>
+ </LABELS>
+</ASSEMBLER_INFO>
