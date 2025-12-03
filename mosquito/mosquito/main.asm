@@ -1,15 +1,12 @@
 ;
 ; mosquito.asm
 ;
-; Created: 02-12-2025 19:03:44
-; Author : mit41301
+; Created: 03-12-2025 19:03:44
+; Author : Mosquito
 ;
-
-
 ;--------------------------------------------------------
 ;here is the assembly code
 ;--------------------------------------------------------
-
 ;
 ; The rick rolling mosquito
 ;
@@ -35,7 +32,6 @@
 ; >pin 6(PB3) reset
 ;
 ;
-
 ; registers
 ; r16-18 are for temp use
 
@@ -47,8 +43,7 @@
 .DEF rtxonseq = r24 ; holds the current on seq
 .DEF rtxoffseq = r25 ; holds the current off seq
 ;.DEF rnotelength = r26 ; the time to play the note
-;.DEF rnotelength =  XH ;
-#define rnotelength XH
+#define rnotelength XL
 
 .EQU rxpin = PB2
 .EQU txpin = PB1
@@ -855,4 +850,5 @@ tripledelayr16Loop:
     brne tripledelayr16Loop
     pop r18
     pop r17
+
     ret
