@@ -1,7 +1,7 @@
 ;
 ; mosquito.asm
 ;
-; Created: 02-12-2025 19:03:44
+; Created: 03-12-2025 19:03:44
 ; Author : junkplusarduino
 ;
 ;--------------------------------------------------------
@@ -42,7 +42,7 @@
 .DEF rtxonseq = r24 ; holds the current on seq
 .DEF rtxoffseq = r25 ; holds the current off seq
 ;.DEF rnotelength = r26 ; the time to play the note
-#define rnotelength XL
+#define rnotelength XL ; defined to suppress the warning r26 = XL
 
 .EQU rxpin = PB2
 .EQU txpin = PB1
@@ -849,5 +849,4 @@ tripledelayr16Loop:
     brne tripledelayr16Loop
     pop r18
     pop r17
-
     ret
