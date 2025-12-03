@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm Wed Dec 03 11:31:09 2025
+AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm Wed Dec 03 11:34:56 2025
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc\tn10def.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc\tn10def.inc'
@@ -425,7 +425,7 @@ AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mo
                                  
                                  ; mosquito.asm
                                  ;
-                                 ; Created: 03-12-2025 19:03:44
+                                 ; Created: Wed Dec 03 11:33:34 2025
                                  ; Author : junkplusarduino
                                  ;
                                  ;--------------------------------------------------------
