@@ -1,8 +1,8 @@
 ;
 ; mosquito.asm
 ;
-; Created: 03-12-2025 19:03:44
-; Author : Mosquito
+; Created: 02-12-2025 19:03:44
+; Author : mit41301
 ;
 ;--------------------------------------------------------
 ;here is the assembly code
@@ -31,7 +31,6 @@
 ; >pin 4(PB2) rx
 ; >pin 6(PB3) reset
 ;
-;
 ; registers
 ; r16-18 are for temp use
 
@@ -43,6 +42,8 @@
 .DEF rtxonseq = r24 ; holds the current on seq
 .DEF rtxoffseq = r25 ; holds the current off seq
 ;.DEF rnotelength = r26 ; the time to play the note
+;.DEF rnotelength = XH ; the time to play the note
+;.DEF rnotelength =  XH ;
 #define rnotelength XL
 
 .EQU rxpin = PB2
@@ -107,8 +108,8 @@
     reti ; ADC conversion complete
 
 ; interrupt service routines
-;isr_pcint:
-    ;reti ; return and enable int
+   ;isr_pcint:
+   ;reti ; return and enable int
 
 main:
     ; set up the stack
@@ -160,7 +161,7 @@ loop:
     rcall receive
     ;rcall adjustdata
    
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
     ;wait about 30 seconds
     ldi r16, 0xFF
@@ -850,5 +851,4 @@ tripledelayr16Loop:
     brne tripledelayr16Loop
     pop r18
     pop r17
-
     ret

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm Tue Dec 02 19:20:43 2025
+AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mosquito\main.asm Wed Dec 03 11:16:29 2025
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc\tn10def.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc\tn10def.inc'
@@ -428,12 +428,9 @@ AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mo
                                  ; Created: 02-12-2025 19:03:44
                                  ; Author : mit41301
                                  ;
-                                 
-                                 
                                  ;--------------------------------------------------------
                                  ;here is the assembly code
                                  ;--------------------------------------------------------
-                                 
                                  ;
                                  ; The rick rolling mosquito
                                  ;
@@ -458,8 +455,6 @@ AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mo
                                  ; >pin 4(PB2) rx
                                  ; >pin 6(PB3) reset
                                  ;
-                                 ;
-                                 
                                  ; registers
                                  ; r16-18 are for temp use
                                  
@@ -471,8 +466,9 @@ AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mo
                                  .DEF rtxonseq = r24 ; holds the current on seq
                                  .DEF rtxoffseq = r25 ; holds the current off seq
                                  ;.DEF rnotelength = r26 ; the time to play the note
+                                 ;.DEF rnotelength = XH ; the time to play the note
                                  ;.DEF rnotelength =  XH ;
-                                 #define rnotelength XH
+                                 #define rnotelength XL
                                  
                                  .EQU rxpin = PB2
                                  .EQU txpin = PB1
@@ -536,8 +532,8 @@ AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mo
 00000a 9518                          reti ; ADC conversion complete
                                  
                                  ; interrupt service routines
-                                 ;isr_pcint:
-                                     ;reti ; return and enable int
+                                    ;isr_pcint:
+                                    ;reti ; return and enable int
                                  
                                  main:
                                      ; set up the stack
@@ -589,7 +585,7 @@ AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mo
 000024 d011                          rcall receive
                                      ;rcall adjustdata
                                     
-                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                  
                                      ;wait about 30 seconds
 000025 ef0f                          ldi r16, 0xFF
@@ -1113,14 +1109,14 @@ AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mo
 000162 d022                          rcall playFFE
                                  
 000163 d02d                          rcall playABDB
-000164 e0b6                          ldi rnotelength, twobeat
+000164 e0a6                          ldi rnotelength, twobeat
 000165 d053                          rcall playEb
 000166 e003                          ldi r16, littlepause
 000167 d06b                          rcall tripledelayr16
 000168 d050                          rcall playEb
 000169 e003                          ldi r16, littlepause
 00016a d068                          rcall tripledelayr16
-00016b e1b2                          ldi rnotelength, sixbeat
+00016b e1a2                          ldi rnotelength, sixbeat
 00016c d048                          rcall playDb
                                  
 00016d e003                          ldi r16, littlepause
@@ -1133,16 +1129,16 @@ AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mo
 000172 d012                          rcall playFFE
                                  
 000173 d01d                          rcall playABDB
-000174 e0b6                          ldi rnotelength, twobeat
+000174 e0a6                          ldi rnotelength, twobeat
 000175 d04b                          rcall playAbp
 000176 e003                          ldi r16, littlepause
 000177 d05b                          rcall tripledelayr16
 000178 d038                          rcall playC
 000179 e003                          ldi r16, littlepause
 00017a d058                          rcall tripledelayr16
-00017b e0bc                          ldi rnotelength, fourbeat
+00017b e0ac                          ldi rnotelength, fourbeat
 00017c d038                          rcall playDb
-00017d e0b3                          ldi rnotelength, onebeat
+00017d e0a3                          ldi rnotelength, onebeat
 00017e d032                          rcall playC
 00017f d02d                          rcall playBb
                                  
@@ -1155,14 +1151,14 @@ AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mo
 000184 9508                          ret
                                  
                                  playFFE:
-000185 e0b6                          ldi rnotelength, twobeat
+000185 e0a6                          ldi rnotelength, twobeat
 000186 d036                          rcall playF
 000187 e003                          ldi r16, littlepause
 000188 d04a                          rcall tripledelayr16
 000189 d033                          rcall playF
 00018a e003                          ldi r16, littlepause
 00018b d047                          rcall tripledelayr16
-00018c e1b2                          ldi rnotelength, sixbeat
+00018c e1a2                          ldi rnotelength, sixbeat
 00018d d02b                          rcall playEb
                                     
 00018e e003                          ldi r16, littlepause
@@ -1170,7 +1166,7 @@ AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mo
 000190 9508                          ret
                                  
                                  playABDB:
-000191 e0b3                          ldi rnotelength, onebeat
+000191 e0a3                          ldi rnotelength, onebeat
 000192 d016                          rcall playAb
 000193 d019                          rcall playBb
 000194 d020                          rcall playDb
@@ -1178,19 +1174,19 @@ AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mo
 000196 9508                          ret
                                  
                                  playDECBAAED:
-000197 e0b9                          ldi rnotelength, threebeat
+000197 e0a9                          ldi rnotelength, threebeat
 000198 d01c                          rcall playDb
 000199 d01f                          rcall playEb
-00019a e0b9                          ldi rnotelength, threebeat
+00019a e0a9                          ldi rnotelength, threebeat
 00019b d015                          rcall playC
-00019c e0b3                          ldi rnotelength, onebeat
+00019c e0a3                          ldi rnotelength, onebeat
 00019d d00f                          rcall playBb
-00019e e0b6                          ldi rnotelength, twobeat
+00019e e0a6                          ldi rnotelength, twobeat
 00019f d009                          rcall playAb
 0001a0 e003                          ldi r16, littlepause
 0001a1 d031                          rcall tripledelayr16
 0001a2 d006                          rcall playAb
-0001a3 e0bc                          ldi rnotelength, fourbeat
+0001a3 e0ac                          ldi rnotelength, fourbeat
 0001a4 d014                          rcall playEb
 0001a5 d00f                          rcall playDb
                                  
@@ -1246,7 +1242,7 @@ AVRASM ver. 2.2.7  C:\Users\mit41301\Documents\Atmel Studio\mosquito\mosquito\mo
 0001c7 e009                          ldi r16, (1<<WGM02)|(1<<CS00) ;this turns it on
 0001c8 bd0d                          out TCCR0B, r16
                                  
-0001c9 2f0b                          mov r16, rnotelength
+0001c9 2f0a                          mov r16, rnotelength
 0001ca d008                          rcall tripledelayr16
                                  
 0001cb e008                          ldi r16, (1<<WGM02) ;this turns it off
@@ -1299,7 +1295,7 @@ counted separately from r26..r31 here.
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
 r13:   0 r14:   0 r15:   0 r16:  59 r17:  38 r18:  29 r19:  19 r20:  25 
-r21:  12 r22:  32 r23:   8 r24:  37 r25:  37 r26:   0 r27:  14 r28:   0 
+r21:  12 r22:  32 r23:   8 r24:  37 r25:  37 r26:  14 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 11 out of 35 (31.4%)
 
